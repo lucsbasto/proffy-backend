@@ -56,43 +56,26 @@ Instruções de como acessar as rotas e instalação.
 ### ⚒ Instalando <a name = "installing"></a>
 
 ```
-git clone https://github.com/lucsbasto/Proffy.git
+git clone https://github.com/lucsbasto/proffy-backend
 
 # Go into the backend repository
 
-$ cd Proffy
-$ cd backend
+$ cd proffy-backend
 $ yarn
 $ yarn start
 
 # Configure seu .env baseado no .env.example
-$ yarn knex:migrate
 $ yarn start
 # server inicializado
 
-# 💻 Iniciando com o Front-end
-$ cd frontend
-$ yarn
-$ yarn start
-
-# 📱 Iniciando com o Mobile 🚧 Em Construção...🚧
-
-$ cd mobile
-$ yarn
-$ yarn start
 ```
 
 ## ⛏️ Tecnologias Utilizadas <a name = "built_using"></a>
 
-- 🔵 [TypeScript][typescript]
-- ⚛️ [React][reactjs]
 - 🟢 [NodeJs][nodejs]
 - 🐱 [NestJS][nestjs]
 - ❄️ [Mongoose][mongoose]
 - 🐘 [MongoDB][mongodb]
-<!-- - 🔼 [Expo][expo]
-- ⚛️ [React Native][reactNative]
-- 💅 [Styled-components] -->
 
 ## 👨‍💼 Metas de desenvolvimento <a name = "roadmap"></a>
 
@@ -111,15 +94,11 @@ $ yarn start
 
 Feito com ❤️ por Lucas Bastos 👋🏽 [Entre em contato!](https://www.linkedin.com/in/lucsbasto/)
 
-[expo]: https://expo.io/
 [mongoose]:https://mongoosejs.com
 [mongodb]: https://www.mongodb.com/
 [nodejs]: https://nodejs.org/en/
 [nestjs]: https://nestjs.com/
 [typescript]: https://www.typescriptlang.org/
-[reactjs]: https://reactjs.org
-[reactNative]: https://reactnative.dev/
 [rs]: https://rocketseat.com.br
 [Rocketseat]:https://github.com/Rocketseat
-[styled-components]:https://styled-components.com/
 
