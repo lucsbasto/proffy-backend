@@ -46,7 +46,7 @@ Após isso os alunos podem encontrar esse professor buscando a matéria, dia e h
 
 
 <h2 align="center">
-    <img alt="Proffy" title="#GoBarber" src=".github/web.gif" width="100%" />
+    <img alt="Proffy" title="#GoBarber" src=".github/backend.gif" width="100%" />
 </h2>
 
 ## 🏁 Iniciando <a name = "getting_started"></a>
