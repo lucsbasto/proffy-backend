@@ -1,21 +1,22 @@
 import { Model } from 'mongoose';
+import { IUser, IUserModel } from 'src/users/users.schema';
 
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
-import { UsersService } from '../users/users.service';
 import { IClass, IClassModel } from './classes.schema';
 
 @Injectable()
 export class ClassesService {
-  constructor (@InjectModel('Classes')
-    private readonly ClasseModel: Model<IClassModel>,
-    private readonly userService: UsersService
+  constructor (
+    @InjectModel('Classes') private readonly ClasseModel: Model<IClassModel>,
+    @InjectModel('Users') private readonly UserModel: Model<IUserModel>
   ) {}
 
   async create (classe: IClass): Promise<IClass> {
-    const isTeacher = this.userService.verifyIfIsTeacher(classe);
+    const isTeacher = await this.verifyIfIsTeacher(classe);
     if (isTeacher) {
+      console.log('irra', isTeacher);
       const newClass = new this.ClasseModel(classe);
       await newClass.save();
       return newClass;
@@ -39,5 +40,13 @@ export class ClassesService {
       return 'Class Deleted';
     }
     throw new Error('Class not found');
+  }
+
+  async verifyIfIsTeacher (oneClass: IClass): Promise<boolean> {
+    const user = await this.UserModel.findOne({ _id: oneClass.teacher });
+    if (user.is_teacher) {
+      return true;
+    }
+    return false;
   }
 }

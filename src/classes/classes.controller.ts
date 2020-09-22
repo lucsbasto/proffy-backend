@@ -20,7 +20,7 @@ export class ClassesController {
   async create (@Body() classe: IClass): Promise<IResponse> {
     try {
       const newClasse: IClass = await this.classesService.create(classe);
-      return { user: newClasse };
+      return { class: newClasse };
     } catch (error) {
       const err: IError = {
         message: error.message,

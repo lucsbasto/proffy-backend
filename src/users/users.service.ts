@@ -35,12 +35,4 @@ export class UsersService {
     }
     throw new Error('User not found');
   }
-
-  async verifyIfIsTeacher (oneClass: IClass): Promise<boolean> {
-    const isTeacher: IUser = await this.UserModel.findById(oneClass.teacher);
-    if (isTeacher.is_teacher) {
-      return true;
-    }
-    return false;
-  }
 }
