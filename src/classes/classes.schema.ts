@@ -1,13 +1,13 @@
-import { Schema, Types } from 'mongoose';
+import { Schema, Types, Document } from 'mongoose';
 
-export interface IClasse {
+export interface IClass {
   _id?: string;
   subject: string;
   teacher: string;
   cost: number;
 }
 
-export const schema = Schema(
+export const schema = new Schema(
   {
     subject: {
       type: String,
@@ -24,15 +24,15 @@ export const schema = Schema(
     }
   },
   {
-    timestamp: true,
-    toJson: {
-      transform: (_, ret) => {
+    timestamps: true,
+    toJSON: {
+      transform: (_, ret): void => {
         ret.id = ret._id;
-        delete ret._it;
+        delete ret._id;
         delete ret.__v;
       }
     }
   }
 );
 
-export interface IClasseModel extends Omit<IClasse, '_id'>, Document {}
+export interface IClassModel extends Omit<IClass, '_id'>, Document {}

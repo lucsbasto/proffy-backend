@@ -8,7 +8,7 @@ import { IUser, IUserModel } from './users.schema';
 @Injectable()
 export class UsersService {
   constructor (@InjectModel('Users')
-   private readonly UserModel: Model<IUserModel>
+    private readonly UserModel: Model<IUserModel>
   ) {}
 
   async store (user: IUser): Promise<IUser> {
@@ -20,5 +20,18 @@ export class UsersService {
   async index (): Promise<IUser[]> {
     const users = await this.UserModel.find({});
     return users;
+  }
+
+  async show (id: string): Promise<IUser> {
+    const user = await this.UserModel.findOne({ _id: id });
+    return user;
+  }
+
+  async delete (id: string): Promise<string> {
+    const deletedUser = await this.UserModel.deleteOne({ _id: id });
+    if (deletedUser.deletedCount) {
+      return 'User Deleted';
+    }
+    throw new Error('User not found');
   }
 }

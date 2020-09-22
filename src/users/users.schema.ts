@@ -1,10 +1,11 @@
+/* eslint-disable camelcase */
 import { Schema, Document } from 'mongoose';
 
 export interface IUser {
   _id?: string;
   name: string;
   avatar: string,
-  lastName: string;
+  last_name: string;
   mail: string;
   password: string;
   whatsapp: string;

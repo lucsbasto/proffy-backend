@@ -1,6 +1,7 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
+import { ValidateIDMiddleware } from '../utils/validateid.middleware';
 import { UsersController } from './users.controller';
 import { schema } from './users.schema';
 import { UsersService } from './users.service';
@@ -9,4 +10,10 @@ import { UsersService } from './users.service';
   controllers: [UsersController],
   providers: [UsersService]
 })
-export class UsersModule {}
+export class UsersModule implements NestModule {
+  configure (consumer: MiddlewareConsumer) {
+    consumer
+      .apply(ValidateIDMiddleware)
+      .forRoutes(UsersController);
+  }
+}
