@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ClassesModule } from './classes/classes.module';
 import { UsersModule } from './users/users.module';
+import { SchedulerModule } from './scheduler/scheduler.module';
 
 const mongooseModuleOptions: MongooseModuleOptions = {
   retryAttempts: 3,
@@ -27,7 +28,7 @@ const mongooseModuleOptions: MongooseModuleOptions = {
       ...mongooseModuleOptions
     }),
     inject: [ConfigService]
-  }), UsersModule, ClassesModule],
+  }), UsersModule, ClassesModule, SchedulerModule],
   controllers: [AppController],
   providers: [AppService]
 })
