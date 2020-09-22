@@ -64,7 +64,7 @@ $ cd proffy-backend
 $ yarn
 $ yarn start
 
-# Configure seu .env baseado no .env.example
+# Configure seu .env baseado no example.env
 $ yarn start
 # server inicializado
 
