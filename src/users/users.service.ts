@@ -1,4 +1,5 @@
 import { Model } from 'mongoose';
+import { IClass } from 'src/classes/classes.schema';
 
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -33,5 +34,13 @@ export class UsersService {
       return 'User Deleted';
     }
     throw new Error('User not found');
+  }
+
+  async verifyIfIsTeacher (oneClass: IClass): Promise<boolean> {
+    const isTeacher: IUser = await this.UserModel.findById(oneClass.teacher);
+    if (isTeacher.is_teacher) {
+      return true;
+    }
+    return false;
   }
 }

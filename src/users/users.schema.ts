@@ -7,6 +7,7 @@ export interface IUser {
   avatar: string,
   last_name: string;
   mail: string;
+  is_teacher: boolean;
   password: string;
   whatsapp: string;
   bio: string;
@@ -39,6 +40,11 @@ export const schema = new Schema(
       type: String,
       required: true
     },
+    is_teacher: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
     bio: {
       type: String,
       required: true
@@ -55,5 +61,9 @@ export const schema = new Schema(
     }
   }
 );
+
+schema.methods.isTeacher = function () {
+  return this.is_teacher;
+};
 
 export interface IUserModel extends Omit<IUser, '_id'>, Document {}

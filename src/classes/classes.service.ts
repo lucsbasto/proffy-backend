@@ -3,18 +3,24 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
+import { UsersService } from '../users/users.service';
 import { IClass, IClassModel } from './classes.schema';
 
 @Injectable()
 export class ClassesService {
   constructor (@InjectModel('Classes')
-    private readonly ClasseModel: Model<IClassModel>
+    private readonly ClasseModel: Model<IClassModel>,
+    private readonly userService: UsersService
   ) {}
 
   async create (classe: IClass): Promise<IClass> {
-    const newClass = new this.ClasseModel(classe);
-    await newClass.save();
-    return newClass;
+    const isTeacher = this.userService.verifyIfIsTeacher(classe);
+    if (isTeacher) {
+      const newClass = new this.ClasseModel(classe);
+      await newClass.save();
+      return newClass;
+    }
+    throw new Error('Only teachers can create classes.');
   }
 
   async index (): Promise<IClass[]> {

@@ -79,11 +79,12 @@ $ yarn start
 
 ## 👨‍💼 Metas de desenvolvimento <a name = "roadmap"></a>
 
-- Desenvolver o sistema de cadastro/login de usuário.
-- Desenvolver o sistema de cadastro de professores.
-- Desenvolver o sistema de filtro de professores por dia-materia-hora.
-- Desenvolver o sistema de conexão entre alunos e professores.
-- Desenvolver o sistema de alteração de dados do usuario.
+- [x] Desenvolver o sistema de cadastro de professores.
+- [ ] Desenvolver o sistema de cadastro/login de usuário.
+- [x] Desenvolver um hook para que somente professores consigam cadastrar aulas.
+- [ ] Desenvolver o sistema de filtro de professores por dia-materia-hora.
+- [ ] Desenvolver o sistema de conexão entre alunos e professores.
+- [ ] Desenvolver o sistema de alteração de dados do usuario.
 
 ## 🤔 Como contribuir <a name = "contribute"></a>
 
